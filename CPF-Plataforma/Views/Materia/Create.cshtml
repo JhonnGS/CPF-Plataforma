@@ -1,0 +1,57 @@
+﻿@model escuelaFreireFinal.Models.ViewModel.MateriaViewModel
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h2>Crear</h2>
+<form method="post" action="@Url.Action("Crear","Materia")">
+    <div class="form-group">
+        <label>MAESTRO:</label>
+        <select name="Materia.idMaestro" class="form-control">
+            <option>SELECCIONE</option>
+            @foreach (var maestro in Model.maestros)
+            {
+                <option value="@maestro.idMaestro">@maestro.nombre @maestro.apellidoPat @maestro.apellidoMat</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label> NOMBRE DE LA MATERIA:</label>
+        @Html.TextBoxFor(x => x.materia.nombreMateria, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+
+        <label> CODIGO DE LA MATERIA:</label><input class="btn btn-primary" onclick="calcula_aleatorio()" type="button" value="Calcular Aleatorio">
+        @Html.TextBoxFor(x => x.materia.codigoMateria, new { @class = "form-control", @id = "cod", @name = "hexa", Value = "" })
+    </div>
+
+    <div class="form-group">
+        <label> HORAS POR SEMANA:</label>
+        @Html.TextBoxFor(x => x.materia.horasxs, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label> GRADO:</label>
+        @Html.TextBoxFor(x => x.materia.grado, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label> SECCION:</label>
+        @Html.TextBoxFor(x => x.materia.seccion, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <input type="submit" value="GUARDAR" class="btn-block">
+    </div>
+</form>
+
+<script>
+    function calcula_aleatorio() {
+        let num = document.getElementById("hexa");
+
+        let resultado = Math.round(Math.random() * (5000 - 1000) + parseInt(1000));
+        hexa = resultado.toString(16);
+
+</script>
